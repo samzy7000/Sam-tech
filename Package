@@ -1,1 +1,14 @@
 package.json
+{
+  "name": "sam-tech",
+  "version": "1.0.0",
+  "description": "Sam-Tech WhatsApp Bot",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "samzy7000",
+  "license": "MIT",
+  "dependencies": {}
+}
