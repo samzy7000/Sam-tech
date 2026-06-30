@@ -1,1 +1,9 @@
-config.js
+import dotenv from "dotenv";
+
+dotenv.config();
+
+export default {
+    botName: process.env.BOT_NAME || "Sam-Tech",
+    prefix: process.env.PREFIX || ".",
+    owner: process.env.OWNER || "254700000000"
+};
