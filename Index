@@ -1,1 +1,5 @@
-console.log("🚀 Sam-Tech Bot is starting...");
+import { startBot } from "./lib/client.js";
+
+console.log("🚀 Starting Sam-Tech...");
+
+startBot();
