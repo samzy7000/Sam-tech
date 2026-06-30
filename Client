@@ -1,1 +1,30 @@
-client.js
+import makeWASocket, {
+  useMultiFileAuthState,
+  DisconnectReason,
+  fetchLatestBaileysVersion
+} from "@whiskeysockets/baileys";
+
+import P from "pino";
+
+export async function startBot() {
+  const { state, saveCreds } = await useMultiFileAuthState("session");
+
+  const { version } = await fetchLatestBaileysVersion();
+
+  const sock = makeWASocket({
+    version,
+    auth: state,
+    logger: P({ level: "silent" }),
+    printQRInTerminal: false
+  });
+
+  sock.ev.on("creds.update", saveCreds);
+
+  sock.ev.on("connection.update", ({ connection }) => {
+    if (connection === "open") {
+      console.log("✅ Sam-Tech is connected to WhatsApp!");
+    }
+  });
+
+  return sock;
+}
